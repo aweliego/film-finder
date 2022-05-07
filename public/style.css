@@ -5,7 +5,7 @@
 }
 
 body {
-  background-color: #7f0920;
+  background-color: #201e1e;
 }
 
 header {
@@ -39,41 +39,47 @@ header {
   position: absolute;
   margin-top: 38vh;
   z-index: 0;
+  width: 100%;
+  padding-bottom: 50px;
 }
 
 #movieInfo {
-  width: 65%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  max-width: 700px;
   margin: 32px auto;
 }
 
-#movieInfo:after {
-  content: '';
-  display: table;
-  clear: both;
-}
-
-#moviePoster,
-#movieText {
-  width: 50%;
-  float: left;
-}
-
 img#moviePoster {
-  width: 100%;
+  width: 50%;
   height: auto;
   display: block;
   margin: auto;
+}
+
+@media (min-width: 715px) {
+  img#moviePoster {
+    width: 100%;
+  }
+}
+
+#moviePoster {
+  flex: 1 0 300px;
 }
 
 #movieText {
   font-family: 'Questrial';
   color: #fefbea;
   line-height: 1.25;
+  flex: 1 0 400px;
+  padding: 0 25px;
+  text-align: justify;
 }
 
 #movieTitle,
 #movieOverview {
-  padding: 32px;
+  padding: 18px;
 }
 
 #playBtn {
