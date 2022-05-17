@@ -8,6 +8,7 @@ body {
   background-color: #201e1e;
 }
 
+/* Fix header height on mobile */
 header {
   background-color: #7f0920;
   position: fixed;
@@ -18,6 +19,12 @@ header {
   height: 38vh;
   display: flex;
   flex-direction: column;
+}
+
+@media (min-width: 360px) and (min-height: 740px) {
+  header {
+    height: 14vh;
+  }
 }
 
 #appTitle {
@@ -32,54 +39,6 @@ header {
   display: block;
   font-family: 'Fredoka One', sans-serif;
   font-size: 1em;
-}
-
-.container {
-  background-color: #201e1e;
-  position: absolute;
-  margin-top: 38vh;
-  z-index: 0;
-  width: 100%;
-  padding-bottom: 50px;
-}
-
-#movieInfo {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  max-width: 700px;
-  margin: 32px auto;
-}
-
-img#moviePoster {
-  width: 50%;
-  height: auto;
-  display: block;
-  margin: auto;
-}
-
-@media (min-width: 715px) {
-  img#moviePoster {
-    width: 100%;
-  }
-}
-
-#moviePoster {
-  flex: 1 0 300px;
-}
-
-#movieText {
-  font-family: 'Questrial';
-  color: #fefbea;
-  line-height: 1.25;
-  flex: 1 0 400px;
-  padding: 0 25px;
-  text-align: justify;
-}
-
-#movieTitle,
-#movieOverview {
-  padding: 18px;
 }
 
 #playBtn {
@@ -123,6 +82,104 @@ select:focus {
   border: #b97828 3px solid;
 }
 
+#likedOrDislikedTabs {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  top: -16px;
+  text-align: center;
+}
+
+/* For Samsung S8 but not working */
+@media (min-width: 360px) and (min-height: 740px) {
+  #likedOrDislikedTabs {
+    top: 16px;
+  }
+}
+
+/* For Samsung Galaxy S20 and Iphone 12 */
+@media (min-width: 390px) and (min-height: 844px) {
+  #likedOrDislikedTabs {
+    top: 35px;
+  }
+}
+
+#likedOrDislikedTabs button {
+  display: inline-block;
+  background-color: #201e1e;
+  color: #fefbea;
+  border: none;
+  border-radius: 8px 8px 0px 0px;
+  padding: 10px 15px 3px;
+  font-size: 18px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+}
+
+.container {
+  background-color: #201e1e;
+  position: absolute;
+  margin-top: 38vh;
+  z-index: 0;
+  width: 100%;
+  padding-bottom: 50px;
+}
+
+@media (min-width: 360px) and (min-height: 740px) {
+  .container {
+    margin-top: 14vh;
+  }
+}
+
+#results {
+  display: block;
+}
+
+#movieInfo {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  max-width: 700px;
+  margin: 32px auto;
+}
+
+img#moviePoster {
+  width: 50%;
+  height: auto;
+  display: block;
+  margin: auto;
+}
+
+@media (min-width: 715px) {
+  img#moviePoster {
+    width: 100%;
+  }
+}
+
+#moviePoster {
+  flex: 1 0 300px;
+}
+
+#movieText {
+  font-family: 'Questrial';
+  color: #fefbea;
+  line-height: 1.25;
+  flex: 1 0 400px;
+  padding: 0 25px;
+  text-align: justify;
+}
+
+#movieTitle,
+#movieOverview {
+  padding: 18px;
+}
+
+#movieTitle {
+  text-align: left;
+}
+
 #likeOrDislikeBtns {
   text-align: center;
   margin: 0px auto;
@@ -145,4 +202,9 @@ select:focus {
 #dislikeBtn {
   background-color: #c74a4a;
   color: #910000;
+}
+
+#feedback {
+  display: none;
+  color: #fefbea;
 }
