@@ -8,7 +8,6 @@ body {
   background-color: #201e1e;
 }
 
-/* Fix header height on mobile */
 header {
   background-color: #7f0920;
   position: fixed;
@@ -134,7 +133,7 @@ select:focus {
 }
 
 #results {
-  display: block;
+  display: none;
 }
 
 #movieInfo {
@@ -205,6 +204,20 @@ img#moviePoster {
 }
 
 #feedback {
-  display: none;
+  display: flex;
+  justify-content: space-between;
   color: #fefbea;
+  line-height: 1.7;
+  font-size: 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  padding: 20px;
+}
+
+#dislikedMovies {
+  text-align: right;
+}
+
+#feedback ul {
+  list-style-type: none;
+  margin: 0 10px;
 }

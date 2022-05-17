@@ -43,12 +43,26 @@ const likeMovie = (movieInfo) => {
   addToLikedMovies(movieInfo);
 };
 
+// After disliking a movie, clears the current movie from the screen and gets another random movie adds to list of disliked movies
+const dislikeMovie = (movieInfo) => {
+  clearCurrentMovie();
+  showRandomMovie();
+  addToDislikedMovies(movieInfo);
+};
+
 const likedMovies = [];
+const dislikedMovies = [];
 
 // Add movie to list of liked movies
 const addToLikedMovies = (movieInfo) => {
   likedMovies.push(movieInfo);
   displayLikedMovies(likedMovies);
+};
+
+// Add movie to list of disliked movies
+const addToDislikedMovies = (movieInfo) => {
+  dislikedMovies.push(movieInfo);
+  displayDislikedMovies(dislikedMovies);
 };
 
 // Show liked movies at the bottom of page
@@ -68,10 +82,21 @@ const displayLikedMovies = (likedMovies) => {
   });
 };
 
-// After disliking a movie, clears the current movie from the screen and gets another random movie
-const dislikeMovie = () => {
-  clearCurrentMovie();
-  showRandomMovie();
+// Show disliked movies at the bottom of page
+const displayDislikedMovies = (dislikedMovies) => {
+  const movieList = document.getElementById('dislikedMoviesList');
+  if (movieList.hasChildNodes()) {
+    while (movieList.firstChild) {
+      movieList.removeChild(movieList.firstChild);
+    }
+  }
+  dislikedMovies.forEach((movie) => {
+    const title = document.createElement('li');
+    title.classList.add('dislikedMovie');
+    title.setAttribute('id', 'dislikedMovie');
+    title.innerText = movie.title;
+    movieList.appendChild(title);
+  });
 };
 
 // Create HTML for movie poster
