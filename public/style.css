@@ -81,42 +81,6 @@ select:focus {
   border: #b97828 3px solid;
 }
 
-#likedOrDislikedTabs {
-  display: flex;
-  justify-content: space-between;
-  position: relative;
-  top: -16px;
-  text-align: center;
-}
-
-/* For Samsung S8 but not working */
-@media (min-width: 360px) and (min-height: 740px) {
-  #likedOrDislikedTabs {
-    top: 16px;
-  }
-}
-
-/* For Samsung Galaxy S20 and Iphone 12 */
-@media (min-width: 390px) and (min-height: 844px) {
-  #likedOrDislikedTabs {
-    top: 35px;
-  }
-}
-
-#likedOrDislikedTabs button {
-  display: inline-block;
-  background-color: #201e1e;
-  color: #fefbea;
-  border: none;
-  border-radius: 8px 8px 0px 0px;
-  padding: 10px 15px 3px;
-  font-size: 18px;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  cursor: pointer;
-}
-
 .container {
   background-color: #201e1e;
   position: absolute;
@@ -133,7 +97,7 @@ select:focus {
 }
 
 #results {
-  display: none;
+  display: block;
 }
 
 #movieInfo {
@@ -204,20 +168,60 @@ img#moviePoster {
 }
 
 #feedback {
-  display: flex;
-  justify-content: space-between;
+  display: block;
+  position: fixed;
   color: #fefbea;
   line-height: 1.7;
   font-size: 20px;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  padding: 20px;
+  z-index: 2;
+  background-color: #201e1e;
 }
 
-#dislikedMovies {
-  text-align: right;
+#slide {
+  position: fixed;
+  width: 30%;
+  height: 100vh;
+  border: none;
+  background-color: #201e1e;
+  padding: 20px;
+  top: 0;
+  left: 0;
+  transform: translateX(-100%);
+  transform: translateX(0);
+  transition: transform 0.3s ease-in-out;
+}
+
+#slide .visible {
+  transform: translateX(0);
+}
+
+.close-btn {
+  position: absolute;
+  opacity: 0.5;
+  top: 30px;
+  right: 30px;
+  border: none;
+  background-color: transparent;
+  color: #fff;
+  cursor: pointer;
+  font-size: 20px;
 }
 
 #feedback ul {
   list-style-type: none;
-  margin: 0 10px;
+}
+
+#likedDislikedMoviesBtn {
+  position: fixed;
+  top: 50px;
+  left: 0px;
+  z-index: 2;
+  padding: 5px 15px;
+  font-size: 25px;
+  border-radius: 0 5px 5px 0;
+  border-style: none;
+  cursor: pointer;
+  color: #fdc238;
+  background-color: #201e1e;
 }
