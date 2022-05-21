@@ -19,7 +19,8 @@
     <script defer src="public/script.js"></script>
   </head>
   <body>
-    <button type="button" id="likedDislikedMoviesBtn">
+    <div class="overlay"></div>
+    <button type="button" id="starBtn">
       <i class="fa-solid fa-star"></i>
     </button>
     <header>
@@ -45,19 +46,17 @@
         </div>
       </div>
     </div>
-    <div id="feedback">
-      <div id="slide">
-        <button class="close-btn">
-          <i class="fas fa-times"></i>
-        </button>
-        <div id="likedMovies">
-          <h4>Liked <i class="fa-solid fa-thumbs-up"></i></h4>
-          <ul id="likedMoviesList"></ul>
-        </div>
-        <div id="dislikedMovies">
-          <h4>Disliked <i class="fa-solid fa-thumbs-down"></i></h4>
-          <ul id="dislikedMoviesList"></ul>
-        </div>
+    <div class="sideBar">
+      <button id="closeBtn">
+        <i class="fas fa-times"></i>
+      </button>
+      <div id="likedMovies">
+        <h4>Liked <i class="fa-solid fa-thumbs-up"></i></h4>
+        <ul id="likedMoviesList"></ul>
+      </div>
+      <div id="dislikedMovies">
+        <h4>Disliked <i class="fa-solid fa-thumbs-down"></i></h4>
+        <ul id="dislikedMoviesList"></ul>
       </div>
     </div>
   </body>

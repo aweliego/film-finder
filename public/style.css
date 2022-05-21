@@ -167,52 +167,7 @@ img#moviePoster {
   color: #910000;
 }
 
-#feedback {
-  display: block;
-  position: fixed;
-  color: #fefbea;
-  line-height: 1.7;
-  font-size: 20px;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  z-index: 2;
-  background-color: #201e1e;
-}
-
-#slide {
-  position: fixed;
-  width: 30%;
-  height: 100vh;
-  border: none;
-  background-color: #201e1e;
-  padding: 20px;
-  top: 0;
-  left: 0;
-  transform: translateX(-100%);
-  transform: translateX(0);
-  transition: transform 0.3s ease-in-out;
-}
-
-#slide .visible {
-  transform: translateX(0);
-}
-
-.close-btn {
-  position: absolute;
-  opacity: 0.5;
-  top: 30px;
-  right: 30px;
-  border: none;
-  background-color: transparent;
-  color: #fff;
-  cursor: pointer;
-  font-size: 20px;
-}
-
-#feedback ul {
-  list-style-type: none;
-}
-
-#likedDislikedMoviesBtn {
+#starBtn {
   position: fixed;
   top: 50px;
   left: 0px;
@@ -224,4 +179,60 @@ img#moviePoster {
   cursor: pointer;
   color: #fdc238;
   background-color: #201e1e;
+}
+
+.overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+  background-color: rgba(0, 0, 0, 0.325);
+}
+
+.overlay.enabled {
+  display: initial;
+}
+
+.sideBar {
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  width: 30%;
+  min-width: 220px;
+  height: 100vh;
+  border: none;
+  background-color: #201e1e;
+  color: #fefbea;
+  padding: 20px;
+  line-height: 1.7;
+  font-size: 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  transform: translateX(-100%);
+  transition: transform 0.3s ease-in-out;
+}
+
+.sideBar .visible {
+  transform: translateX(0);
+}
+
+#closeBtn {
+  position: absolute;
+  opacity: 0.5;
+  top: 30px;
+  right: 30px;
+  border: none;
+  background-color: transparent;
+  color: #fff;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.sideBar ul {
+  list-style-type: none;
+  margin-bottom: 20px;
 }
