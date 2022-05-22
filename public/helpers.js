@@ -157,3 +157,18 @@ const displayMovie = (movieInfo) => {
 
   dislikeBtn.onclick = () => dislikeMovie(movieInfo);
 };
+
+const sideBar = document.querySelector('.sideBar');
+const starBtn = document.getElementById('starBtn');
+const closeBtn = document.getElementById('closeBtn');
+const overlay = document.querySelector('.overlay');
+
+starBtn.addEventListener('click', () => {
+  sideBar.style.transform = 'translateX(0)';
+  overlay.classList.add('enabled');
+});
+
+closeBtn.addEventListener('click', () => {
+  sideBar.style.transform = 'translateX(-100%)';
+  overlay.classList.remove('enabled');
+});

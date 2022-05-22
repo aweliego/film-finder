@@ -216,10 +216,6 @@ img#moviePoster {
   transition: transform 0.3s ease-in-out;
 }
 
-.sideBar .visible {
-  transform: translateX(0);
-}
-
 #closeBtn {
   position: absolute;
   opacity: 0.5;
