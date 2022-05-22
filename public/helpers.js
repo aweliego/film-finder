@@ -50,29 +50,27 @@ const dislikeMovie = (movieInfo) => {
   addToDislikedMovies(movieInfo);
 };
 
-const likedMovies = [];
-const dislikedMovies = [];
-
 // Add movie to list of liked movies
 const addToLikedMovies = (movieInfo) => {
-  likedMovies.push(movieInfo);
-  displayLikedMovies(likedMovies);
+  storeLikedMovie(movieInfo);
+  displayLikedMovies();
 };
 
 // Add movie to list of disliked movies
 const addToDislikedMovies = (movieInfo) => {
-  dislikedMovies.push(movieInfo);
-  displayDislikedMovies(dislikedMovies);
+  storeDislikedMovie(movieInfo);
+  displayDislikedMovies();
 };
 
-// Show liked movies at the bottom of page
-const displayLikedMovies = (likedMovies) => {
+// Show liked movies in sideBar
+const displayLikedMovies = () => {
   const movieList = document.getElementById('likedMoviesList');
   if (movieList.hasChildNodes()) {
     while (movieList.firstChild) {
       movieList.removeChild(movieList.firstChild);
     }
   }
+  let likedMovies = JSON.parse(localStorage.getItem('likedMovies'));
   likedMovies.forEach((movie) => {
     const title = document.createElement('li');
     title.classList.add('likedMovie');
@@ -82,14 +80,24 @@ const displayLikedMovies = (likedMovies) => {
   });
 };
 
-// Show disliked movies at the bottom of page
-const displayDislikedMovies = (dislikedMovies) => {
+// Add liked movies to local storage
+const storeLikedMovie = (movieInfo) => {
+  let myLikedMovies = localStorage.getItem('likedMovies')
+    ? JSON.parse(localStorage.getItem('likedMovies'))
+    : [];
+  myLikedMovies.push(movieInfo);
+  localStorage.setItem('likedMovies', JSON.stringify(myLikedMovies));
+};
+
+// Show disliked movies in sideBar
+const displayDislikedMovies = () => {
   const movieList = document.getElementById('dislikedMoviesList');
   if (movieList.hasChildNodes()) {
     while (movieList.firstChild) {
       movieList.removeChild(movieList.firstChild);
     }
   }
+  let dislikedMovies = JSON.parse(localStorage.getItem('dislikedMovies'));
   dislikedMovies.forEach((movie) => {
     const title = document.createElement('li');
     title.classList.add('dislikedMovie');
@@ -97,6 +105,15 @@ const displayDislikedMovies = (dislikedMovies) => {
     title.innerText = movie.title;
     movieList.appendChild(title);
   });
+};
+
+// Add disliked movies to local storage
+const storeDislikedMovie = (movieInfo) => {
+  let myDislikedMovies = localStorage.getItem('dislikedMovies')
+    ? JSON.parse(localStorage.getItem('dislikedMovies'))
+    : [];
+  myDislikedMovies.push(movieInfo);
+  localStorage.setItem('dislikedMovies', JSON.stringify(myDislikedMovies));
 };
 
 // Create HTML for movie poster
@@ -158,6 +175,7 @@ const displayMovie = (movieInfo) => {
   dislikeBtn.onclick = () => dislikeMovie(movieInfo);
 };
 
+// Show/Hide sidebar
 const sideBar = document.querySelector('.sideBar');
 const starBtn = document.getElementById('starBtn');
 const closeBtn = document.getElementById('closeBtn');

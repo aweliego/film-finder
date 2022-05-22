@@ -2,6 +2,29 @@ const tmdbKey = 'dc25829665947e3aea1b0e6265f125ad';
 const tmdbBaseUrl = 'https://api.themoviedb.org/3';
 const playBtn = document.getElementById('playBtn');
 
+// Load liked and disliked movies from local storage
+const myLikedMovies = JSON.parse(localStorage.getItem('likedMovies'));
+const myDislikedMovies = JSON.parse(localStorage.getItem('dislikedMovies'));
+
+if (myLikedMovies) {
+  myLikedMovies.forEach((movie) => {
+    const movieList = document.getElementById('likedMoviesList');
+    const title = document.createElement('li');
+    title.innerText = movie.title;
+    movieList.appendChild(title);
+  });
+}
+
+if (myDislikedMovies) {
+  myDislikedMovies.forEach((movie) => {
+    const movieList = document.getElementById('dislikedMoviesList');
+    const title = document.createElement('li');
+    title.innerText = movie.title;
+    movieList.appendChild(title);
+  });
+}
+
+// API calls
 const getGenres = async () => {
   const genreRequestEndpoint = '/genre/movie/list';
   const requestParams = `?api_key=${tmdbKey}`;
