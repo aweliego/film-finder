@@ -8,7 +8,6 @@ body {
   background-color: #201e1e;
 }
 
-/* Fix header height on mobile */
 header {
   background-color: #7f0920;
   position: fixed;
@@ -80,42 +79,6 @@ select {
 select:focus {
   outline: 0;
   border: #b97828 3px solid;
-}
-
-#likedOrDislikedTabs {
-  display: flex;
-  justify-content: space-between;
-  position: relative;
-  top: -16px;
-  text-align: center;
-}
-
-/* For Samsung S8 but not working */
-@media (min-width: 360px) and (min-height: 740px) {
-  #likedOrDislikedTabs {
-    top: 16px;
-  }
-}
-
-/* For Samsung Galaxy S20 and Iphone 12 */
-@media (min-width: 390px) and (min-height: 844px) {
-  #likedOrDislikedTabs {
-    top: 35px;
-  }
-}
-
-#likedOrDislikedTabs button {
-  display: inline-block;
-  background-color: #201e1e;
-  color: #fefbea;
-  border: none;
-  border-radius: 8px 8px 0px 0px;
-  padding: 10px 15px 3px;
-  font-size: 18px;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  cursor: pointer;
 }
 
 .container {
@@ -204,7 +167,83 @@ img#moviePoster {
   color: #910000;
 }
 
-#feedback {
+#starBtn {
+  position: fixed;
+  top: 50px;
+  left: 0px;
+  z-index: 2;
+  padding: 5px 15px;
+  font-size: 25px;
+  border-radius: 0 5px 5px 0;
+  border-style: none;
+  cursor: pointer;
+  color: #fdc238;
+  background-color: #201e1e;
+}
+
+.overlay {
   display: none;
-  color: #fefbea;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+  background-color: rgba(0, 0, 0, 0.325);
+}
+
+.overlay.enabled {
+  display: initial;
+}
+
+.sideBar {
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  width: 30%;
+  min-width: 220px;
+  height: 100vh;
+  border: none;
+  background-color: #201e1e;
+  color: #f5eeee;
+  padding: 20px;
+  line-height: 1.7;
+  font-size: 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  overflow-x: auto;
+  transform: translateX(-100%);
+  transition: transform 0.3s ease-in-out;
+}
+Ï
+.sideBar::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  background-color: #544e4e;
+}
+
+.sideBar::-webkit-scrollbar {
+  width: 8px;
+  background-color: #201e1e;
+}
+
+.sideBar::-webkit-scrollbar-thumb {
+  background-color: transparent;
+}
+
+#closeBtn {
+  position: absolute;
+  opacity: 0.5;
+  top: 30px;
+  right: 30px;
+  border: none;
+  background-color: transparent;
+  color: #fff;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.sideBar ul {
+  list-style-type: none;
+  margin-bottom: 20px;
 }

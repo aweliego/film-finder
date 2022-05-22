@@ -19,6 +19,10 @@
     <script defer src="public/script.js"></script>
   </head>
   <body>
+    <div class="overlay"></div>
+    <button type="button" id="starBtn">
+      <i class="fa-solid fa-star"></i>
+    </button>
     <header>
       <h1 id="appTitle">🍿Film Finder🍿</h1>
       <form id="genreForm">
@@ -26,11 +30,8 @@
         <select name="genres" id="genres" autofocus="true"></select>
       </form>
       <button type="submit" id="playBtn">Let's Play!</button>
-      <div id="likedOrDislikedTabs">
-        <button>Liked <i class="fa-solid fa-thumbs-up"></i></button>
-        <button>Disliked <i class="fa-solid fa-thumbs-down"></i></button>
-      </div>
     </header>
+
     <div class="container">
       <div id="results">
         <div id="movieInfo">
@@ -44,13 +45,18 @@
           </button>
         </div>
       </div>
-      <div id="feedback">
-        <div id="likedMovies">
-          <ul id="likedMoviesList"></ul>
-        </div>
-        <div id="dislikedMovies">
-          <ul id="dislikedMoviesList"></ul>
-        </div>
+    </div>
+    <div class="sideBar">
+      <button id="closeBtn">
+        <i class="fas fa-times"></i>
+      </button>
+      <div id="likedMovies">
+        <h4>Liked <i class="fa-solid fa-thumbs-up"></i></h4>
+        <ul id="likedMoviesList"></ul>
+      </div>
+      <div id="dislikedMovies">
+        <h4>Disliked <i class="fa-solid fa-thumbs-down"></i></h4>
+        <ul id="dislikedMoviesList"></ul>
       </div>
     </div>
   </body>
