@@ -116,6 +116,15 @@ const storeDislikedMovie = (movieInfo) => {
   localStorage.setItem('dislikedMovies', JSON.stringify(myDislikedMovies));
 };
 
+const clearAllMovies = () => {
+  const myLikedMovies = document.querySelectorAll('.likedMovie');
+  const myDislikedMovies = document.querySelectorAll('.dislikedMovie');
+  myLikedMovies.forEach((movie) => movie.remove());
+  myDislikedMovies.forEach((movie) => movie.remove());
+  localStorage.removeItem('likedMovies');
+  localStorage.removeItem('dislikedMovies');
+};
+
 // Create HTML for movie poster
 const createMoviePoster = (posterPath) => {
   const moviePosterUrl = `https://image.tmdb.org/t/p/original/${posterPath}`;
@@ -180,6 +189,7 @@ const sideBar = document.querySelector('.sideBar');
 const starBtn = document.getElementById('starBtn');
 const closeBtn = document.getElementById('closeBtn');
 const overlay = document.querySelector('.overlay');
+const clearAllBtn = document.getElementById('clear');
 
 starBtn.addEventListener('click', () => {
   sideBar.style.transform = 'translateX(0)';
@@ -190,3 +200,5 @@ closeBtn.addEventListener('click', () => {
   sideBar.style.transform = 'translateX(-100%)';
   overlay.classList.remove('enabled');
 });
+
+clearAllBtn.addEventListener('click', () => clearAllMovies());
