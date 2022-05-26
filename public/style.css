@@ -216,8 +216,7 @@ img#moviePoster {
   transform: translateX(-100%);
   transition: transform 0.3s ease-in-out;
 }
-Ï
-.sideBar::-webkit-scrollbar-track {
+Ï .sideBar::-webkit-scrollbar-track {
   box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
   background-color: #544e4e;
 }
@@ -246,4 +245,30 @@ img#moviePoster {
 .sideBar ul {
   list-style-type: none;
   margin-bottom: 20px;
+}
+
+#clear {
+  background-color: #c74a4a;
+  color: #f5eeee;
+  padding: 8px 12px;
+  margin-bottom: 15px;
+  font-size: 18px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#clear:hover {
+  background-color: #ec2b2b;
+}
+
+.fa-circle-minus {
+  opacity: 0.5;
+  margin-left: 8px;
+  cursor: pointer;
+}
+
+.fa-circle-minus:hover {
+  opacity: 1;
+  color: #c74a4a;
 }

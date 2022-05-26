@@ -10,7 +10,7 @@ if (myLikedMovies) {
   myLikedMovies.forEach((movie) => {
     const movieList = document.getElementById('likedMoviesList');
     const title = document.createElement('li');
-    title.innerText = movie.title;
+    title.innerHTML = `${movie.title} <i class="fa-solid fa-circle-minus"></i>`;
     movieList.appendChild(title);
   });
 }
@@ -19,7 +19,7 @@ if (myDislikedMovies) {
   myDislikedMovies.forEach((movie) => {
     const movieList = document.getElementById('dislikedMoviesList');
     const title = document.createElement('li');
-    title.innerText = movie.title;
+    title.innerHTML = `${movie.title} <i class="fa-solid fa-circle-minus"></i>`;
     movieList.appendChild(title);
   });
 }

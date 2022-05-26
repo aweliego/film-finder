@@ -75,7 +75,7 @@ const displayLikedMovies = () => {
     const title = document.createElement('li');
     title.classList.add('likedMovie');
     title.setAttribute('id', 'likedMovie');
-    title.innerText = movie.title;
+    title.innerHTML = `${movie.title} <i class="fa-solid fa-circle-minus"></i>`;
     movieList.appendChild(title);
   });
 };
@@ -102,7 +102,7 @@ const displayDislikedMovies = () => {
     const title = document.createElement('li');
     title.classList.add('dislikedMovie');
     title.setAttribute('id', 'dislikedMovie');
-    title.innerText = movie.title;
+    title.innerHTML = `${movie.title} <i class="fa-solid fa-circle-minus"></i>`;
     movieList.appendChild(title);
   });
 };
