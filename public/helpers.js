@@ -71,13 +71,7 @@ const displayLikedMovies = () => {
     }
   }
   let likedMovies = JSON.parse(localStorage.getItem('likedMovies'));
-  likedMovies.forEach((movie) => {
-    const title = document.createElement('li');
-    title.classList.add('likedMovie');
-    title.setAttribute('id', 'likedMovie');
-    title.innerHTML = `${movie.title} <i class="fa-solid fa-circle-minus delete-btn"></i>`;
-    movieList.appendChild(title);
-  });
+  likedMovies.forEach((movie) => createLikedMovie(movie));
 };
 
 // Add liked movies to local storage
@@ -98,13 +92,7 @@ const displayDislikedMovies = () => {
     }
   }
   let dislikedMovies = JSON.parse(localStorage.getItem('dislikedMovies'));
-  dislikedMovies.forEach((movie) => {
-    const title = document.createElement('li');
-    title.classList.add('dislikedMovie');
-    title.setAttribute('id', 'dislikedMovie');
-    title.innerHTML = `${movie.title} <i class="fa-solid fa-circle-minus delete-btn"></i>`;
-    movieList.appendChild(title);
-  });
+  dislikedMovies.forEach((movie) => createDislikedMovie(movie));
 };
 
 // Add disliked movies to local storage
@@ -127,6 +115,26 @@ const clearAllMovies = () => {
 
 const deleteMovie = (movie) => {
   movie.remove();
+};
+
+// Create HTML for liked movies
+const createLikedMovie = (movie) => {
+  const movieList = document.getElementById('likedMoviesList');
+  const title = document.createElement('li');
+  title.classList.add('likedMovie');
+  title.setAttribute('id', 'likedMovie');
+  title.innerHTML = `${movie.title} <i class="fa-solid fa-circle-minus delete-btn"></i>`;
+  movieList.appendChild(title);
+};
+
+// Create HTML for disliked movies
+const createDislikedMovie = (movie) => {
+  const movieList = document.getElementById('dislikedMoviesList');
+  const title = document.createElement('li');
+  title.classList.add('dislikedMovie');
+  title.setAttribute('id', 'dislikedMovie');
+  title.innerHTML = `${movie.title} <i class="fa-solid fa-circle-minus delete-btn"></i>`;
+  movieList.appendChild(title);
 };
 
 // Create HTML for movie poster

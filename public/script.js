@@ -7,25 +7,11 @@ const myLikedMovies = JSON.parse(localStorage.getItem('likedMovies'));
 const myDislikedMovies = JSON.parse(localStorage.getItem('dislikedMovies'));
 
 if (myLikedMovies) {
-  myLikedMovies.forEach((movie) => {
-    const movieList = document.getElementById('likedMoviesList');
-    const title = document.createElement('li');
-    title.classList.add('likedMovie');
-    title.setAttribute('id', 'likedMovie');
-    title.innerHTML = `${movie.title} <i class="fa-solid fa-circle-minus delete-btn"></i>`;
-    movieList.appendChild(title);
-  });
+  myLikedMovies.forEach((movie) => createLikedMovie(movie));
 }
 
 if (myDislikedMovies) {
-  myDislikedMovies.forEach((movie) => {
-    const movieList = document.getElementById('dislikedMoviesList');
-    const title = document.createElement('li');
-    title.classList.add('dislikedMovie');
-    title.setAttribute('id', 'dislikedMovie');
-    title.innerHTML = `${movie.title} <i class="fa-solid fa-circle-minus delete-btn"></i>`;
-    movieList.appendChild(title);
-  });
+  myDislikedMovies.forEach((movie) => createDislikedMovie(movie));
 }
 
 // Delete btns need to be queried after local storage has been fetched and movies have been (re)created, otherwise empty node list is returned
