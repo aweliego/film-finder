@@ -75,7 +75,7 @@ const displayLikedMovies = () => {
     const title = document.createElement('li');
     title.classList.add('likedMovie');
     title.setAttribute('id', 'likedMovie');
-    title.innerHTML = `${movie.title} <i class="fa-solid fa-circle-minus"></i>`;
+    title.innerHTML = `${movie.title} <i class="fa-solid fa-circle-minus delete-btn"></i>`;
     movieList.appendChild(title);
   });
 };
@@ -102,7 +102,7 @@ const displayDislikedMovies = () => {
     const title = document.createElement('li');
     title.classList.add('dislikedMovie');
     title.setAttribute('id', 'dislikedMovie');
-    title.innerHTML = `${movie.title} <i class="fa-solid fa-circle-minus"></i>`;
+    title.innerHTML = `${movie.title} <i class="fa-solid fa-circle-minus delete-btn"></i>`;
     movieList.appendChild(title);
   });
 };
@@ -123,6 +123,10 @@ const clearAllMovies = () => {
   myDislikedMovies.forEach((movie) => movie.remove());
   localStorage.removeItem('likedMovies');
   localStorage.removeItem('dislikedMovies');
+};
+
+const deleteMovie = (movie) => {
+  movie.remove();
 };
 
 // Create HTML for movie poster

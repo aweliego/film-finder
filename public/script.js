@@ -12,7 +12,7 @@ if (myLikedMovies) {
     const title = document.createElement('li');
     title.classList.add('likedMovie');
     title.setAttribute('id', 'likedMovie');
-    title.innerHTML = `${movie.title} <i class="fa-solid fa-circle-minus"></i>`;
+    title.innerHTML = `${movie.title} <i class="fa-solid fa-circle-minus delete-btn"></i>`;
     movieList.appendChild(title);
   });
 }
@@ -23,10 +23,19 @@ if (myDislikedMovies) {
     const title = document.createElement('li');
     title.classList.add('dislikedMovie');
     title.setAttribute('id', 'dislikedMovie');
-    title.innerHTML = `${movie.title} <i class="fa-solid fa-circle-minus"></i>`;
+    title.innerHTML = `${movie.title} <i class="fa-solid fa-circle-minus delete-btn"></i>`;
     movieList.appendChild(title);
   });
 }
+
+// Delete btns need to be queried after local storage has been fetched and movies have been (re)created, otherwise empty node list is returned
+const deleteBtns = document.querySelectorAll('.delete-btn');
+
+deleteBtns.forEach((btn) =>
+  btn.addEventListener('click', (e) => {
+    deleteMovie(e.currentTarget.parentNode);
+  })
+);
 
 // API calls
 const getGenres = async () => {
