@@ -113,8 +113,31 @@ const clearAllMovies = () => {
   localStorage.removeItem('dislikedMovies');
 };
 
-const deleteMovie = (movie) => {
-  movie.remove();
+const deleteMovieFromPage = (e) => {
+  const movieEl = e.currentTarget.parentNode;
+  movieEl.remove();
+  const deleteBtn = e.currentTarget;
+  deleteBtn.removeEventListener('click', deleteMovieFromPage);
+};
+
+const deleteFromLocalStorage = (movieTitle, movieId) => {
+  if (movieTitle.classList.contains('likedMovie')) {
+    const myLikedMovies = JSON.parse(localStorage.getItem('likedMovies'));
+    const updatedLikedMovies = myLikedMovies.filter(
+      (movie) => movie.id !== movieId
+    );
+    localStorage.setItem('likedMovies', JSON.stringify(updatedLikedMovies));
+  }
+  if (movieTitle.classList.contains('dislikedMovie')) {
+    const myDislikedMovies = JSON.parse(localStorage.getItem('dislikedMovies'));
+    const updatedDislikedMovies = myDislikedMovies.filter(
+      (movie) => movie.id !== movieId
+    );
+    localStorage.setItem(
+      'dislikedMovies',
+      JSON.stringify(updatedDislikedMovies)
+    );
+  }
 };
 
 // Create HTML for liked movies
@@ -122,9 +145,15 @@ const createLikedMovie = (movie) => {
   const movieList = document.getElementById('likedMoviesList');
   const title = document.createElement('li');
   title.classList.add('likedMovie');
-  title.setAttribute('id', 'likedMovie');
+  title.setAttribute('id', 'likedMovie' + movie.id);
   title.innerHTML = `${movie.title} <i class="fa-solid fa-circle-minus delete-btn"></i>`;
   movieList.appendChild(title);
+
+  const deleteBtn = title.querySelector('.delete-btn');
+  deleteBtn.onclick = (e) => {
+    deleteMovieFromPage(e);
+    deleteFromLocalStorage(title, movie.id);
+  };
 };
 
 // Create HTML for disliked movies
@@ -135,6 +164,12 @@ const createDislikedMovie = (movie) => {
   title.setAttribute('id', 'dislikedMovie');
   title.innerHTML = `${movie.title} <i class="fa-solid fa-circle-minus delete-btn"></i>`;
   movieList.appendChild(title);
+
+  const deleteBtn = title.querySelector('.delete-btn');
+  deleteBtn.addEventListener('click', deleteMovieFromPage);
+  deleteBtn.addEventListener('click', () =>
+    deleteFromLocalStorage(title, movie.id)
+  );
 };
 
 // Create HTML for movie poster

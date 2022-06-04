@@ -216,7 +216,8 @@ img#moviePoster {
   transform: translateX(-100%);
   transition: transform 0.3s ease-in-out;
 }
-Ï .sideBar::-webkit-scrollbar-track {
+
+.sideBar::-webkit-scrollbar-track {
   box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
   background-color: #544e4e;
 }

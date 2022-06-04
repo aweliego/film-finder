@@ -14,15 +14,6 @@ if (myDislikedMovies) {
   myDislikedMovies.forEach((movie) => createDislikedMovie(movie));
 }
 
-// Delete btns need to be queried after local storage has been fetched and movies have been (re)created, otherwise empty node list is returned
-const deleteBtns = document.querySelectorAll('.delete-btn');
-
-deleteBtns.forEach((btn) =>
-  btn.addEventListener('click', (e) => {
-    deleteMovie(e.currentTarget.parentNode);
-  })
-);
-
 // API calls
 const getGenres = async () => {
   const genreRequestEndpoint = '/genre/movie/list';
