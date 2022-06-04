@@ -3,8 +3,8 @@ const tmdbBaseUrl = 'https://api.themoviedb.org/3';
 const playBtn = document.getElementById('playBtn');
 
 // Load liked and disliked movies from local storage
-const myLikedMovies = JSON.parse(localStorage.getItem('likedMovies'));
-const myDislikedMovies = JSON.parse(localStorage.getItem('dislikedMovies'));
+const myLikedMovies = loadLikedMovies();
+const myDislikedMovies = loadDislikedMovies();
 
 if (myLikedMovies) {
   myLikedMovies.forEach((movie) => createLikedMovie(movie));

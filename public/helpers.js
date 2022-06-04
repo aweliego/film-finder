@@ -62,6 +62,24 @@ const addToDislikedMovies = (movieInfo) => {
   displayDislikedMovies();
 };
 
+// Add liked movies to local storage
+const storeLikedMovie = (movieInfo) => {
+  let myLikedMovies = localStorage.getItem('likedMovies')
+    ? loadLikedMovies()
+    : [];
+  myLikedMovies.push(movieInfo);
+  localStorage.setItem('likedMovies', JSON.stringify(myLikedMovies));
+};
+
+// Add disliked movies to local storage
+const storeDislikedMovie = (movieInfo) => {
+  let myDislikedMovies = localStorage.getItem('dislikedMovies')
+    ? loadDislikedMovies()
+    : [];
+  myDislikedMovies.push(movieInfo);
+  localStorage.setItem('dislikedMovies', JSON.stringify(myDislikedMovies));
+};
+
 // Show liked movies in sideBar
 const displayLikedMovies = () => {
   const movieList = document.getElementById('likedMoviesList');
@@ -70,17 +88,8 @@ const displayLikedMovies = () => {
       movieList.removeChild(movieList.firstChild);
     }
   }
-  let likedMovies = JSON.parse(localStorage.getItem('likedMovies'));
+  let likedMovies = loadLikedMovies();
   likedMovies.forEach((movie) => createLikedMovie(movie));
-};
-
-// Add liked movies to local storage
-const storeLikedMovie = (movieInfo) => {
-  let myLikedMovies = localStorage.getItem('likedMovies')
-    ? JSON.parse(localStorage.getItem('likedMovies'))
-    : [];
-  myLikedMovies.push(movieInfo);
-  localStorage.setItem('likedMovies', JSON.stringify(myLikedMovies));
 };
 
 // Show disliked movies in sideBar
@@ -91,53 +100,8 @@ const displayDislikedMovies = () => {
       movieList.removeChild(movieList.firstChild);
     }
   }
-  let dislikedMovies = JSON.parse(localStorage.getItem('dislikedMovies'));
+  let dislikedMovies = loadDislikedMovies();
   dislikedMovies.forEach((movie) => createDislikedMovie(movie));
-};
-
-// Add disliked movies to local storage
-const storeDislikedMovie = (movieInfo) => {
-  let myDislikedMovies = localStorage.getItem('dislikedMovies')
-    ? JSON.parse(localStorage.getItem('dislikedMovies'))
-    : [];
-  myDislikedMovies.push(movieInfo);
-  localStorage.setItem('dislikedMovies', JSON.stringify(myDislikedMovies));
-};
-
-const clearAllMovies = () => {
-  const myLikedMovies = document.querySelectorAll('.likedMovie');
-  const myDislikedMovies = document.querySelectorAll('.dislikedMovie');
-  myLikedMovies.forEach((movie) => movie.remove());
-  myDislikedMovies.forEach((movie) => movie.remove());
-  localStorage.removeItem('likedMovies');
-  localStorage.removeItem('dislikedMovies');
-};
-
-const deleteMovieFromPage = (e) => {
-  const movieEl = e.currentTarget.parentNode;
-  movieEl.remove();
-  const deleteBtn = e.currentTarget;
-  deleteBtn.removeEventListener('click', deleteMovieFromPage);
-};
-
-const deleteFromLocalStorage = (movieTitle, movieId) => {
-  if (movieTitle.classList.contains('likedMovie')) {
-    const myLikedMovies = JSON.parse(localStorage.getItem('likedMovies'));
-    const updatedLikedMovies = myLikedMovies.filter(
-      (movie) => movie.id !== movieId
-    );
-    localStorage.setItem('likedMovies', JSON.stringify(updatedLikedMovies));
-  }
-  if (movieTitle.classList.contains('dislikedMovie')) {
-    const myDislikedMovies = JSON.parse(localStorage.getItem('dislikedMovies'));
-    const updatedDislikedMovies = myDislikedMovies.filter(
-      (movie) => movie.id !== movieId
-    );
-    localStorage.setItem(
-      'dislikedMovies',
-      JSON.stringify(updatedDislikedMovies)
-    );
-  }
 };
 
 // Create HTML for liked movies
@@ -145,7 +109,7 @@ const createLikedMovie = (movie) => {
   const movieList = document.getElementById('likedMoviesList');
   const title = document.createElement('li');
   title.classList.add('likedMovie');
-  title.setAttribute('id', 'likedMovie' + movie.id);
+  title.setAttribute('id', 'likedMovie');
   title.innerHTML = `${movie.title} <i class="fa-solid fa-circle-minus delete-btn"></i>`;
   movieList.appendChild(title);
 
@@ -166,11 +130,55 @@ const createDislikedMovie = (movie) => {
   movieList.appendChild(title);
 
   const deleteBtn = title.querySelector('.delete-btn');
-  deleteBtn.addEventListener('click', deleteMovieFromPage);
-  deleteBtn.addEventListener('click', () =>
-    deleteFromLocalStorage(title, movie.id)
-  );
+  deleteBtn.onclick = (e) => {
+    deleteMovieFromPage(e);
+    deleteFromLocalStorage(title, movie.id);
+  };
 };
+
+// Remove movie individually from page
+const deleteMovieFromPage = (e) => {
+  const movieEl = e.currentTarget.parentNode;
+  movieEl.remove();
+  const deleteBtn = e.currentTarget;
+  deleteBtn.removeEventListener('click', deleteMovieFromPage);
+};
+
+// Remove movie individually from LS
+const deleteFromLocalStorage = (movieTitle, movieId) => {
+  if (movieTitle.classList.contains('likedMovie')) {
+    const myLikedMovies = loadLikedMovies();
+    const updatedLikedMovies = myLikedMovies.filter(
+      (movie) => movie.id !== movieId
+    );
+    localStorage.setItem('likedMovies', JSON.stringify(updatedLikedMovies));
+  }
+  if (movieTitle.classList.contains('dislikedMovie')) {
+    const myDislikedMovies = loadDislikedMovies();
+    const updatedDislikedMovies = myDislikedMovies.filter(
+      (movie) => movie.id !== movieId
+    );
+    localStorage.setItem(
+      'dislikedMovies',
+      JSON.stringify(updatedDislikedMovies)
+    );
+  }
+};
+
+// Clear all movies from page and LS
+const clearAllMovies = () => {
+  const myLikedMovies = document.querySelectorAll('.likedMovie');
+  const myDislikedMovies = document.querySelectorAll('.dislikedMovie');
+  myLikedMovies.forEach((movie) => movie.remove());
+  myDislikedMovies.forEach((movie) => movie.remove());
+  localStorage.removeItem('likedMovies');
+  localStorage.removeItem('dislikedMovies');
+};
+
+const loadLikedMovies = () => JSON.parse(localStorage.getItem('likedMovies'));
+
+const loadDislikedMovies = () =>
+  JSON.parse(localStorage.getItem('dislikedMovies'));
 
 // Create HTML for movie poster
 const createMoviePoster = (posterPath) => {
