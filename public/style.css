@@ -141,6 +141,29 @@ img#moviePoster {
 
 #movieTitle {
   text-align: left;
+  display: inline-block;
+  width: 80%;
+}
+
+#movieRating {
+  display: inline-block;
+  text-align: right;
+  border-radius: 3px;
+  font-weight: bold;
+  padding: 10px 15px;
+  color: #201e1e;
+}
+
+#movieRating.green {
+  background-color: #249e57;
+}
+
+#movieRating.orange {
+  background: darkorange;
+}
+
+#movieRating.red {
+  background: #c74a4a;
 }
 
 #likeOrDislikeBtns {

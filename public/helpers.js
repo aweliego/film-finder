@@ -28,6 +28,16 @@ const showBtns = () => {
   btnDiv.removeAttribute('hidden');
 };
 
+const getClassByRate = (vote) => {
+  if (vote >= 7.5) {
+    return 'green';
+  } else if (vote >= 5) {
+    return 'orange';
+  } else {
+    return 'red';
+  }
+};
+
 // Clear the current movie from the screen
 const clearCurrentMovie = () => {
   const moviePosterDiv = document.getElementById('moviePoster');
@@ -209,6 +219,15 @@ const createMovieOverview = (overview) => {
   return overviewParagraph;
 };
 
+const createMovieRating = (movieVote) => {
+  const rating = document.createElement('span');
+  rating.setAttribute('id', 'movieRating');
+  rating.classList.add(`${getClassByRate(movieVote)}`);
+  rating.innerHTML = movieVote;
+
+  return rating;
+};
+
 // Returns a random movie from the first page of movies
 const getRandomMovie = (movies) => {
   const randomIndex = Math.floor(Math.random() * movies.length);
@@ -217,7 +236,7 @@ const getRandomMovie = (movies) => {
 };
 
 // Uses the DOM to create HTML to display the movie
-const displayMovie = (movieInfo) => {
+const displayMovie = (movieInfo, movieCast) => {
   const moviePosterDiv = document.getElementById('moviePoster');
   const movieTextDiv = document.getElementById('movieText');
   const likeBtn = document.getElementById('likeBtn');
@@ -226,11 +245,13 @@ const displayMovie = (movieInfo) => {
   // Create HTML content containing movie info
   const moviePoster = createMoviePoster(movieInfo.poster_path);
   const titleHeader = createMovieTitle(movieInfo.title);
+  const rating = createMovieRating(movieInfo.vote_average);
   const overviewText = createMovieOverview(movieInfo.overview);
 
   // Append title, poster, and overview to page
   moviePosterDiv.appendChild(moviePoster);
   movieTextDiv.appendChild(titleHeader);
+  movieTextDiv.appendChild(rating);
   movieTextDiv.appendChild(overviewText);
 
   showBtns();
