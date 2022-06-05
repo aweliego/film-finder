@@ -135,8 +135,9 @@ img#moviePoster {
 }
 
 #movieTitle,
-#movieOverview {
-  padding: 18px;
+#movieOverview,
+#movieCast {
+  padding: 14px 18px;
 }
 
 #movieTitle {
@@ -164,6 +165,12 @@ img#moviePoster {
 
 #movieRating.red {
   background: #c74a4a;
+}
+
+#movieCast {
+display: inline-block;
+font-style: italic;
+font-size: 14px;
 }
 
 #likeOrDislikeBtns {

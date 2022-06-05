@@ -228,6 +228,14 @@ const createMovieRating = (movieVote) => {
   return rating;
 };
 
+const createMovieCast = (cast) => {
+  const castInfo = document.createElement('span');
+  castInfo.setAttribute('id', 'movieCast');
+  castInfo.innerHTML = `Cast: ${cast}`;
+
+  return castInfo;
+};
+
 // Returns a random movie from the first page of movies
 const getRandomMovie = (movies) => {
   const randomIndex = Math.floor(Math.random() * movies.length);
@@ -246,12 +254,14 @@ const displayMovie = (movieInfo, movieCast) => {
   const moviePoster = createMoviePoster(movieInfo.poster_path);
   const titleHeader = createMovieTitle(movieInfo.title);
   const rating = createMovieRating(movieInfo.vote_average);
+  const cast = createMovieCast(movieCast);
   const overviewText = createMovieOverview(movieInfo.overview);
 
   // Append title, poster, and overview to page
   moviePosterDiv.appendChild(moviePoster);
   movieTextDiv.appendChild(titleHeader);
   movieTextDiv.appendChild(rating);
+  movieTextDiv.appendChild(cast);
   movieTextDiv.appendChild(overviewText);
 
   showBtns();

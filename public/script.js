@@ -78,9 +78,7 @@ const getCast = async (movie) => {
     const response = await fetch(urlToFetch);
     if (response.ok) {
       const movieCast = await response.json();
-      console.log(movieCast.cast);
-      const actorsNames = movieCast.cast.map((actor) => actor.name).slice(0, 5);
-      console.log(actorsNames);
+      const actorsNames = movieCast.cast.map((actor) => actor.name.trim()).slice(0, 5).join(', ');
       return actorsNames;
     }
   } catch (error) {
