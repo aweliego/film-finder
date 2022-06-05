@@ -110,7 +110,7 @@ const createLikedMovie = (movie) => {
   const title = document.createElement('li');
   title.classList.add('likedMovie');
   title.setAttribute('id', 'likedMovie');
-  title.innerHTML = `${movie.title} <i class="fa-solid fa-circle-minus delete-btn"></i>`;
+  title.innerHTML = `<a href=https://www.imdb.com/title/${movie.imdb_id} target=_blank>${movie.title}</a> <i class="fa-solid fa-circle-minus delete-btn"></i>`;
   movieList.appendChild(title);
 
   const deleteBtn = title.querySelector('.delete-btn');
@@ -126,7 +126,7 @@ const createDislikedMovie = (movie) => {
   const title = document.createElement('li');
   title.classList.add('dislikedMovie');
   title.setAttribute('id', 'dislikedMovie');
-  title.innerHTML = `${movie.title} <i class="fa-solid fa-circle-minus delete-btn"></i>`;
+  title.innerHTML = `<a href=https://www.imdb.com/title/${movie.imdb_id} target=_blank>${movie.title}</a> <i class="fa-solid fa-circle-minus delete-btn"></i>`;
   movieList.appendChild(title);
 
   const deleteBtn = title.querySelector('.delete-btn');

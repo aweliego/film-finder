@@ -248,11 +248,15 @@ img#moviePoster {
   margin-bottom: 20px;
 }
 
+.sideBar ul li a {
+  text-decoration: none;
+  color: inherit;
+}
+
 #clear {
   background-color: #c74a4a;
   color: #f5eeee;
   padding: 8px 12px;
-  margin-bottom: 15px;
   font-size: 18px;
   border: none;
   border-radius: 5px;
@@ -261,6 +265,14 @@ img#moviePoster {
 
 #clear:hover {
   background-color: #ec2b2b;
+}
+
+.sideBar p {
+  opacity: 0.5;
+  font-style: italic;
+  font-size: 18px;
+  letter-spacing: 0.8px;
+  margin: 10px 0 15px 0;
 }
 
 .fa-circle-minus {
