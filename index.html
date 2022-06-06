@@ -26,9 +26,19 @@
     </button>
     <header>
       <h1 id="appTitle">🍿Film Finder🍿</h1>
-      <form id="genreForm">
-        <label>Choose a genre:</label>
-        <select name="genres" id="genres" autofocus="true"></select>
+      <form id="form">
+        <div class="form-group">
+          <label>Choose a genre:</label>
+          <select name="genres" id="genres" autofocus="true"></select>
+        </div>
+        <div class="form-group">
+          <label>Specify actors <small>(optional):</small></label>
+          <input
+            id="searchByActors"
+            type="text"
+            placeholder="Enter an actor's name"
+          />
+        </div>
       </form>
       <button type="submit" id="playBtn">Let's Play!</button>
     </header>
