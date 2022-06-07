@@ -3,19 +3,22 @@
 ## Description
 
 This film finder app comes from a guided project on Codecademy to practice making requests with the fetch API.
-As the name indicates, it helps you find your next watch by genre, and saves the movies you like or dislike.
+
+Before I expanded on this project, the app's functionality was limited to searching your next watch by genre, displaying the movie poster, title and synopsis, and clicking 'like' or 'dislike' buttons to show another random movie in this genre.
 
 ## API
 
-This project uses the [The Movie Database (TMDB)](https://www.themoviedb.org/) API. Please use your own key.
+This project uses the [The Movie Database (TMDB) API](https://developers.themoviedb.org/3/getting-started/introduction). Please use your own key or register for one by creating an account on TMDB and following the instructions in the link above.
 
-## Extra features
+## Added features
 
 I took the initiative to add the following features:
-- Functionality to store the liked and disliked movies in the local storage as well as in a side bar
-- Functionality to clear all liked/disliked movies or to delete them individually
-- Allow the API to randomise results from a random page of results instead of just the first page
-- Improvements in the layout, positioning and general styles
+- Option to search movies by actor, combined to the movie genre
+- Display the movie rating and cast
+- Randomise results from a random page of results instead of just the first page
+- Functionality to store the liked and disliked movies (with a link to their IMDb page) in the local storage as well as in a side bar
+- Functionality to clear all liked/disliked movies or to delete them individually from both the page and local storage
+- Various improvements in the layout, positioning and general styles
 - Responsiveness
 
 
