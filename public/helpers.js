@@ -22,9 +22,7 @@ const getCastValue = () => {
 };
 
 const getCastChoice = (person) => {
-  console.log('this is the person object: ', person);
   const castChoice = document.getElementById('actors');
-  //castChoice.value = person[0].id;
   castChoice.value = person[0].name;
   return person[0].id;
 };

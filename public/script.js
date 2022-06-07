@@ -1,6 +1,8 @@
 const tmdbKey = config.MY_API_KEY;
 const tmdbBaseUrl = 'https://api.themoviedb.org/3';
 const playBtn = document.getElementById('playBtn');
+const form = document.getElementById('form');
+const select = document.getElementById('genres');
 
 // Load liked and disliked movies from local storage
 const myLikedMovies = loadLikedMovies();
@@ -151,3 +153,8 @@ const showRandomMovie = async (person) => {
 getGenres().then(populateGenreDropdown);
 
 playBtn.addEventListener('click', () => searchPerson().then(showRandomMovie));
+
+form.addEventListener('submit', (e) => {
+  e.preventDefault();
+  searchPerson().then(showRandomMovie);
+});
