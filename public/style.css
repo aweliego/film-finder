@@ -15,26 +15,20 @@ header {
   width: 100%;
   margin: 0 auto;
   z-index: 1;
-  height: 41vh;
+  height: 43vh;
   display: flex;
   flex-direction: column;
 }
 
-@media screen and (min-width: 500px) and (max-width: 760px) {
+@media screen and (min-width: 500px) and (max-width: 690px) {
   header {
-    height: 60vh;
+    height: 57vh;
   }
 }
 
-/* Not yet working correctly on Mobile */
-/* @media screen and (min-width: 360px) and (max-width: 499px) {
-  header {
-    height: 14vh;
-  }
-} */
-
 #appTitle {
   margin: 0;
+  padding-top: 15px;
   font-family: 'Staatliches', sans-serif;
   font-size: 4em;
 }
@@ -49,7 +43,7 @@ header {
 
 #form {
   display: flex;
-  flex-flow: row;
+  flex-direction: row;
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
@@ -57,7 +51,7 @@ header {
 
 .form-group {
   display: flex;
-  flex-flow: column;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   margin: 10px 30px;
@@ -85,15 +79,16 @@ header {
 
 label {
   display: block;
-  font-size: 35px;
+  font-size: 25px;
   margin-bottom: 10px;
 }
 
 label small {
-  font-size: 25px;
+  font-size: 20px;
 }
 
-select, input {
+select,
+input {
   width: 200px;
   height: auto;
   padding: 5px 5px;
@@ -105,7 +100,8 @@ select, input {
   border: none;
 }
 
-select:focus, input:focus {
+select:focus,
+input:focus {
   outline: 0;
   border: #b97828 3px solid;
 }
@@ -197,9 +193,9 @@ img#moviePoster {
 }
 
 #movieCast {
-display: inline-block;
-font-style: italic;
-font-size: 14px;
+  display: inline-block;
+  font-style: italic;
+  font-size: 14px;
 }
 
 #likeOrDislikeBtns {
