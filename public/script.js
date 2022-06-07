@@ -32,11 +32,48 @@ const getGenres = async () => {
   }
 };
 
+const searchPerson = async () => {
+  const searchPersonEndpoint = '/search/person';
+  const castInput = getCastValue();
+  const requestParams = `?api_key=${tmdbKey}&query=${castInput}`;
+  const urlToFetch = tmdbBaseUrl + searchPersonEndpoint + requestParams;
+
+  try {
+    const response = await fetch(urlToFetch);
+    if (response.ok) {
+      const jsonResponse = await response.json();
+      const person = jsonResponse.results;
+      return person;
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 const getMovies = async () => {
   const selectedGenre = getSelectedGenre();
   const randomPage = getRandomPage();
   const discoverMovieEndpoint = '/discover/movie';
   const requestParams = `?api_key=${tmdbKey}&with_genres=${selectedGenre}&page=${randomPage}`;
+  const urlToFetch = tmdbBaseUrl + discoverMovieEndpoint + requestParams;
+
+  try {
+    const response = await fetch(urlToFetch);
+    if (response.ok) {
+      const jsonResponse = await response.json();
+      const movies = jsonResponse.results;
+      return movies;
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+const getMoviesWithActor = async (person) => {
+  const selectedGenre = getSelectedGenre();
+  const castChoice = getCastChoice(person);
+  const discoverMovieEndpoint = '/discover/movie';
+  const requestParams = `?api_key=${tmdbKey}&with_genres=${selectedGenre}&with_cast=${castChoice}`;
   const urlToFetch = tmdbBaseUrl + discoverMovieEndpoint + requestParams;
 
   try {
@@ -78,7 +115,10 @@ const getCast = async (movie) => {
     const response = await fetch(urlToFetch);
     if (response.ok) {
       const movieCast = await response.json();
-      const actorsNames = movieCast.cast.map((actor) => actor.name.trim()).slice(0, 5).join(', ');
+      const actorsNames = movieCast.cast
+        .map((actor) => actor.name.trim())
+        .slice(0, 5)
+        .join(', ');
       return actorsNames;
     }
   } catch (error) {
@@ -87,12 +127,21 @@ const getCast = async (movie) => {
 };
 
 // Gets a list of movies and ultimately displays the info of a random movie from the list
-const showRandomMovie = async () => {
+const showRandomMovie = async (person) => {
   const movieInfo = document.getElementById('movieInfo');
   if (movieInfo.childNodes.length > 0) {
     clearCurrentMovie();
   }
-  const movies = await getMovies();
+  let movies;
+  if (person) {
+    movies = await getMoviesWithActor(person);
+  } else {
+    movies = await getMovies();
+  }
+  console.log('movie results');
+  movies.forEach((movie) => {
+    console.log(movie.title);
+  });
   const randomMovie = getRandomMovie(movies);
   const info = await getMovieInfo(randomMovie);
   const cast = await getCast(randomMovie);
@@ -100,4 +149,5 @@ const showRandomMovie = async () => {
 };
 
 getGenres().then(populateGenreDropdown);
-playBtn.onclick = showRandomMovie;
+
+playBtn.addEventListener('click', () => searchPerson().then(showRandomMovie));

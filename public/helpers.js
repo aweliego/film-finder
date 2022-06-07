@@ -16,6 +16,19 @@ const getSelectedGenre = () => {
   return selectedGenre;
 };
 
+const getCastValue = () => {
+  const castValue = document.getElementById('actors').value;
+  return castValue;
+};
+
+const getCastChoice = (person) => {
+  console.log('this is the person object: ', person);
+  const castChoice = document.getElementById('actors');
+  //castChoice.value = person[0].id;
+  castChoice.value = person[0].name;
+  return person[0].id;
+};
+
 // Get random page of result
 const getRandomPage = (min = 0, max = 500) => {
   const randomPage = Math.floor(Math.random() * (max - min) + min);
@@ -49,14 +62,14 @@ const clearCurrentMovie = () => {
 // After liking a movie, clears the current movie from the screen, gets another random movie and adds to list of liked movies
 const likeMovie = (movieInfo) => {
   clearCurrentMovie();
-  showRandomMovie();
+  searchPerson().then(showRandomMovie);
   addToLikedMovies(movieInfo);
 };
 
 // After disliking a movie, clears the current movie from the screen and gets another random movie adds to list of disliked movies
 const dislikeMovie = (movieInfo) => {
   clearCurrentMovie();
-  showRandomMovie();
+  searchPerson().then(showRandomMovie);
   addToDislikedMovies(movieInfo);
 };
 
