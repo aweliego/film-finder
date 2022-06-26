@@ -264,7 +264,7 @@ const displayMovie = (movieInfo, movieCast) => {
   // Create HTML content containing movie info
   const moviePoster = createMoviePoster(movieInfo.poster_path);
   const titleHeader = createMovieTitle(movieInfo.title);
-  const rating = createMovieRating(movieInfo.vote_average);
+  const rating = createMovieRating(movieInfo.vote_average.toFixed(1));
   const cast = createMovieCast(movieCast);
   const overviewText = createMovieOverview(movieInfo.overview);
 
@@ -282,7 +282,7 @@ const displayMovie = (movieInfo, movieCast) => {
 };
 
 // Show/Hide sidebar
-const sideBar = document.querySelector('.sideBar');
+const sideBar = document.getElementById('sideBar');
 const starBtn = document.getElementById('starBtn');
 const closeBtn = document.getElementById('closeBtn');
 const overlay = document.querySelector('.overlay');
@@ -296,6 +296,19 @@ starBtn.addEventListener('click', () => {
 closeBtn.addEventListener('click', () => {
   sideBar.style.transform = 'translateX(-100%)';
   overlay.classList.remove('enabled');
+});
+
+// Close sideBar when clicking outside of it
+document.addEventListener('click', (e) => {
+  if (
+    e.target.id !== 'sideBar' &&
+    e.target.id !== 'closeBtn' &&
+    e.target.id !== 'starBtn' &&
+    e.target.parentNode.id !== 'starBtn'
+  ) {
+    sideBar.style.transform = 'translateX(-100%)';
+    overlay.classList.remove('enabled');
+  }
 });
 
 clearAllBtn.addEventListener('click', () => clearAllMovies());
