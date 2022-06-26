@@ -20,12 +20,6 @@ header {
   flex-direction: column;
 }
 
-@media screen and (min-width: 500px) and (max-width: 690px) {
-  header {
-    height: 57vh;
-  }
-}
-
 #appTitle {
   margin: 0;
   padding-top: 15px;
@@ -113,12 +107,6 @@ input:focus {
   z-index: 0;
   width: 100%;
   padding-bottom: 50px;
-}
-
-@media screen and (min-width: 360px) and (max-width: 499px) {
-  .container {
-    height: 14vh;
-  }
 }
 
 #results {
@@ -339,4 +327,132 @@ img#moviePoster {
 .fa-circle-minus:hover {
   opacity: 1;
   color: #c74a4a;
+}
+
+/* Responsive styles: header height is bigger as form will wrap  */
+
+/* iPad Air, Surface Pro 7 */
+@media screen and (min-width: 820px) and (max-width: 912px) and (min-height: 720px) {
+  header {
+    height: 25vh;
+  }
+  .container {
+    margin-top: 28vh;
+  }
+}
+
+/* iPad Mini */
+@media screen and (min-width: 768px) and (max-width: 819px) and (min-height: 720px) {
+  header {
+    height: 28vh;
+  }
+
+  .container {
+    margin-top: 28vh;
+  }
+}
+
+/* Intermediate browser sizes */
+@media screen and (min-width: 683px) and (max-width: 767px) {
+  header {
+    height: 38vh;
+  }
+
+  #appTitle {
+    font-size: 3em;
+  }
+
+  label {
+    font-size: 23px;
+  }
+
+  #playBtn {
+    margin-top: 10px;
+    font-size: 1.2em;
+  }
+
+  .container {
+    margin-top: 38vh;
+  }
+}
+
+@media screen and (min-width: 500px) and (max-width: 683px) {
+  header {
+    height: 50vh;
+  }
+
+  #appTitle {
+    font-size: 3em;
+  }
+
+  label {
+    font-size: 23px;
+  }
+
+  #playBtn {
+    margin-top: 10px;
+    font-size: 1.2em;
+  }
+
+  .container {
+    margin-top: 48vh;
+  }
+}
+
+/* Samsung Galaxy S8+ */
+@media screen and (min-width: 360px) and (max-width: 389px) {
+  header {
+    height: 43vh;
+  }
+
+  #appTitle {
+    font-size: 2.5em;
+  }
+
+  #form {
+    padding: 0 5px;
+  }
+
+  .form-group {
+    margin: 10px 0;
+  }
+
+  label {
+    font-size: 20px;
+  }
+
+  #playBtn {
+    margin-top: 10px;
+    font-size: 1.5em;
+  }
+}
+
+/* Samsung Galaxy A51/71 & iPhone 12 Pro */
+@media screen and (min-width: 390px) and (max-width: 412px) {
+  header {
+    height: 43vh;
+  }
+
+  #appTitle {
+    font-size: 2.5em;
+  }
+}
+
+/* Samsung Galaxy S20 Ultra */
+@media screen and (min-width: 391px) and (max-width: 499px) {
+  header {
+    height: 40vh;
+  }
+
+  #appTitle {
+    font-size: 3em;
+  }
+
+  .form-group {
+    margin: 15px 0;
+  }
+
+  #playBtn {
+    margin-top: 10px;
+  }
 }
