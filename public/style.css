@@ -353,7 +353,7 @@ img#moviePoster {
 }
 
 /* Intermediate browser sizes */
-@media screen and (min-width: 668px) and (max-width: 767px) {
+@media screen and (min-width: 669px) and (max-width: 767px) {
   header {
     height: 38vh;
   }
@@ -376,7 +376,7 @@ img#moviePoster {
   }
 }
 
-@media screen and (min-width: 500px) and (max-width: 667px) and (max-height: 950px) {
+@media screen and (min-width: 500px) and (max-width: 668px) and (max-height: 950px) {
   header {
     height: 50vh;
   }
